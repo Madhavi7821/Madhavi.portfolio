@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Madhavi Raju Pawar - Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      display: flex;
+      background-color: #fff;
+    }
+
+    .sidebar {
+      width: 250px;
+      background-color: #f9f9ff;
+      padding: 2rem 1rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      border-right: 1px solid #e5e7eb;
+      height: 100vh;
+      position: sticky; /* Keeps sidebar in place */
+      top: 0;
+      left: 0;
+    }
+
+    .sidebar img.profile {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 1rem;
+    }
+
+    .sidebar h2 {
+      font-size: 1.25rem;
+      margin: 0;
+    }
+
+    .sidebar p {
+      color: #6b7280;
+      font-size: 0.875rem;
+      margin-bottom: 1rem;
+    }
+
+    .sidebar .social-icons {
+      display: flex;
+      gap: 0.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .social-icons a {
+      text-decoration: none;
+      color: #3b82f6; /* Changed to match primary blue */
+      font-size: 1.2rem;
+      border: 1px solid #3b82f6; /* Add a border for visual consistency with image */
+      border-radius: 50%; /* Make it round */
+      width: 30px; /* Fixed size for icons */
+      height: 30px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    .social-icons a:hover {
+        background-color: #3b82f6;
+        color: #fff;
+    }
+
+    .nav-links {
+      width: 100%;
+    }
+
+    .nav-links a {
+      display: flex; /* Use flex to align icon and text */
+      align-items: center;
+      padding: 0.75rem 1rem;
+      text-decoration: none;
+      color: #111827;
+      font-weight: 500;
+      border-radius: 8px;
+      margin: 0.25rem 0;
+      gap: 0.75rem; /* Space between icon and text */
+    }
+
+    .nav-links a.active,
+    .nav-links a:hover {
+      background-color: #3b82f6;
+      color: #fff;
+    }
+
+    .nav-links .icon {
+        font-size: 1.2rem;
+        /* Optional: adjust icon color within active state */
+    }
+
+
+    .hire-button {
+      margin-top: auto;
+      padding: 0.75rem 1.5rem;
+      background-color: #3b82f6;
+      color: #fff;
+      font-weight: 600;
+      border: none;
+      border-radius: 999px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .hire-button:hover {
+        background-color: #2563eb;
+    }
+
+    .main {
+      flex: 1;
+      padding: 3rem;
+      overflow-y: auto;
+    }
+
+    .main section {
+        margin-bottom: 4rem; /* Add space between main sections */
+    }
+
+    .main h1 {
+      font-size: 1rem;
+      font-weight: 400;
+      color: #4b5563;
+    }
+
+    .main h2 {
+      font-size: 3rem;
+      font-weight: 800;
+      color: #3b82f6;
+      margin: 0.5rem 0;
+    }
+
+    .main p {
+      font-size: 1rem;
+      color: #4b5563;
+      margin-bottom: 1.5rem;
+      line-height: 1.6; /* Improved readability */
+    }
+
+    .main a {
+      color: #3b82f6;
+      text-decoration: none;
+      font-weight: 600; /* Make links stand out */
+    }
+    .main a:hover {
+        text-decoration: underline;
+    }
+
+
+    .buttons {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .buttons button {
+      padding: 0.75rem 1.5rem;
+      font-size: 1rem;
+      border: none;
+      border-radius: 999px;
+      cursor: pointer;
+      font-weight: 600;
+      display: flex; /* Align content inside button */
+      align-items: center;
+      gap: 0.5rem;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+
+    .buttons .portfolio {
+      background-color: #3b82f6;
+      color: white;
+    }
+
+    .buttons .portfolio:hover {
+        background-color: #2563eb;
+        transform: translateY(-2px);
+    }
+
+    .buttons .Professional Experience {
+      background-color: #111827;
+      color: white;
+    }
+
+    .buttons .Professional Experience:hover {
+        background-color: #374151;
+        transform: translateY(-2px);
+    }
+
+    .stats {
+      display: flex;
+      gap: 3rem;
+      margin-top: 2rem;
+      padding-top: 2rem; /* Add some top padding */
+      border-top: 1px solid #e5e7eb; /* Separator line */
+    }
+
+    .stat {
+      text-align: center;
+    }
+
+    .stat h3 {
+      font-size: 2rem;
+      font-weight: 700;
+      margin: 0;
+      color: #111827;
+    }
+
+    .stat span {
+      display: block;
+      color: #6b7280;
+      font-size: 0.875rem;
+      margin-top: 0.25rem;
+    }
+
+    .section-title {
+        font-size: 2rem;
+        font-weight: 800;
+        color: #111827;
+        margin-top: 3rem;
+        margin-bottom: 1.5rem;
+        border-bottom: 2px solid #e5e7eb;
+        padding-bottom: 0.5rem;
+    }
+
+    .section-subtitle {
+      font-size: 1.5rem;
+      color: #111827;
+      margin-top: 2rem;
+      border-bottom: 2px solid #e5e7eb;
+      padding-bottom: 0.5rem;
+    }
+
+    .experience-item {
+        margin-bottom: 2rem;
+    }
+
+    .experience-item h4 {
+        font-size: 1.25rem;
+        margin-bottom: 0.5rem;
+        color: #111827;
+    }
+
+    .experience-item .duration {
+        font-size: 0.9rem;
+        color: #6b7280;
+        margin-bottom: 0.5rem;
+        display: block;
+    }
+
+    .experience-item ul {
+        padding-left: 1.5rem;
+        list-style-type: disc;
+        color: #4b5563;
+    }
+
+    .experience-item li {
+        margin-bottom: 0.5rem;
+    }
+
+    .skills-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1.5rem;
+        margin-top: 1.5rem;
+    }
+
+    .skill-category {
+        flex-basis: 45%; /* Adjust as needed for column layout */
+    }
+
+    .skill-category strong {
+        display: block;
+        margin-bottom: 0.5rem;
+        color: #3b82f6;
+        font-size: 1rem;
+    }
+
+    .skill-category p {
+        margin: 0;
+        font-size: 0.95rem;
+        color: #4b5563;
+    }
+
+    .education-item {
+        margin-bottom: 1.5rem;
+    }
+
+    .education-item h4 {
+        font-size: 1.15rem;
+        margin-bottom: 0.25rem;
+        color: #111827;
+    }
+
+    .education-item .details {
+        font-size: 0.95rem;
+        color: #6b7280;
+        margin-bottom: 0.5rem;
+    }
+
+    .project-item {
+        margin-bottom: 2rem;
+        border: 1px solid #e5e7eb;
+        border-radius: 8px;
+        overflow: hidden;
+        transition: box-shadow 0.3s ease;
+    }
+
+    .project-item:hover {
+        box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
+
+    .project-item img {
+        width: 100%;
+        height: 200px; /* Fixed height for project images */
+        object-fit: cover;
+        display: block;
+    }
+
+    .project-item .project-content {
+        padding: 1.5rem;
+    }
+
+    .project-item h4 {
+        font-size: 1.25rem;
+        margin-top: 0;
+        margin-bottom: 0.5rem;
+        color: #111827;
+    }
+
+    .project-item p {
+        font-size: 0.95rem;
+        color: #4b5563;
+        margin-bottom: 1rem;
+    }
+
+    .contact-info-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1.5rem;
+        margin-top: 2rem;
+    }
+
+    .contact-box {
+        background-color: #f9f9ff;
+        padding: 1.5rem;
+        border-radius: 8px;
+        text-align: center;
+        border: 1px solid #e5e7eb;
+    }
+
+    .contact-box .icon {
+        font-size: 2rem;
+        color: #3b82f6;
+        margin-bottom: 1rem;
+    }
+
+    .contact-box h4 {
+        margin: 0;
+        font-size: 1.1rem;
+        color: #111827;
+    }
+
+    .contact-box p {
+        margin-top: 0.5rem;
+        font-size: 0.9rem;
+        color: #4b5563;
+    }
+
+    /* Simple Icons - You might want to replace these with a proper icon library like Font Awesome if available */
+    .icon-user:before { content: '👤'; }
+    .icon-briefcase:before { content: '💼'; }
+    .icon-code:before { content: '💻'; }
+    .icon-book:before { content: '📚'; }
+    .icon-award:before { content: '🏆'; }
+    .icon-mail:before { content: '✉️'; }
+    .icon-phone:before { content: '📞'; }
+    .icon-map:before { content: '📍'; }
+    .icon-linkedin:before { content: '🔗'; } /* Or use a dedicated LinkedIn icon */
+    .icon-github:before { content: '🐙'; } /* Or use a dedicated GitHub icon */
+    .icon-social-globe:before { content: '🌐'; } /* General web icon for blog */
+    .icon-file-text:before { content: '📄'; } /* For Professional Experience */
+
+    /* Generic button for Hire Me/Email Me consistency */
+    .action-button {
+      background-color: #3b82f6;
+      color: white;
+      padding: 0.75rem 1.5rem;
+      font-weight: 600;
+      border: none;
+      border-radius: 999px;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+      margin-top: 2rem;
+    }
+
+    .action-button:hover {
+        background-color: #2563eb;
+        transform: translateY(-2px);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="sidebar">
+    <img src="images/about - me.jpg" onerror="this.onerror=null;this.src='https://placehold.co/80x80/f9f9ff/3b82f6?text=MP';" alt="Profile" class="profile">
+    <h2>Madhavi Raju Pawar</h2>
+    <p>Data Professional</p>
+    <div class="social-icons">
+      <a href="https://www.linkedin.com/in/madhavi-pawar-057a3b196/" title="LinkedIn"><span class="icon-linkedin"></span></a>
+      <a href="mailto:madhavipawar7324@gmail.com" title="Email"><span class="icon-mail"></span></a>
+      <a href="https://github.com/Madhavi7821" title="GitHub"><span class="icon-github"></span></a>
+    </div>
+    <div class="nav-links">
+      <a href="#about-section" class="active"><span class="icon-user"></span>About Us</a>
+      <a href="#project-section"><span class="icon-code"></span>Portfolio</a>
+      <a href="#Professional-Experience-section"><span class="icon-briefcase"></span>Professional-Experience</a>
+      <a href="#education-section"><span class="icon-book"></span>Education</a>
+      <a href="#contact-section"><span class="icon-mail"></span>Contact</a>
+    </div>
+    <a href="mailto:madhavipawar7324@gmail.com" class="hire-button">Hire Me</a>
+  </div>
+
+  <div class="main">
+    <section id="home-section">
+        <h1>Hi, I’m Madhavi</h1>
+        <h2><span id="typing-animation">Data Professional</span></h2>
+        <p>
+          I’m a detail-oriented and results-driven Data Professional specializing in analysis, statistical modeling, and regulatory reporting in banking and tech domains. Skilled in leveraging Python, SQL, and visualization tools like Tableau and Power BI to derive actionable insights from complex datasets.
+        </p>
+        <div class="buttons">
+          <a href="#project-section" class="buttons portfolio">→ View Portfolio</a>
+          <a href="#Professional-Experience-section" class="buttons Professional-Experience">View Professional-Experience</a>
+        </div>
+
+        <div class="stats">
+          <div class="stat">
+            <h3>3<span>+</span></h3>
+            <span>Years of Experience</span>
+          </div>
+          <div class="stat">
+            <h3>3</h3> <span>Projects Completed</span>
+          </div>
+          <div class="stat">
+            <h3>1</h3> <span>Current Engagement</span>
+          </div>
+        </div>
+    </section>
+
+    <section id="about-section">
+        <h3 class="section-title">About Me</h3>
+        <p>Detail-oriented and results-driven Data Professional with experience in analysis, statistical modeling, and regulatory reporting in banking and tech domains. Skilled in leveraging Python, SQL, and visualization tools like Tableau and Power BI to derive actionable insights from complex datasets. Strong foundation in machine learning, hypothesis testing, and time series analysis, with hands-on experience in financial systems and compliance reporting. Adept at collaborating with cross-functional teams, communicating findings effectively, and driving data-driven decision-making in high-impact environments. Also learning German.</p>
+
+        <p><strong>Name:</strong> Madhavi Raju Pawar</p>
+        <p><strong>Nationality:</strong> Indian</p>
+        <p><strong>Address:</strong> Graz, Austria</p>
+        <p><strong>Date of Birth:</strong> 30/04/1998</p>
+        <p><strong>Languages:</strong> English, Hindi, Marathi, German (Learning)</p>
+    </section>
+
+    <section id="Professional-Experience-section">
+        <h3 class="section-title">Professional Experience</h3>
+
+        <div class="experience-item">
+            <h4>System Engineer</h4>
+            <span class="duration">Feb 2022 – Sept 2024 | Tata Consultancy Services (India)</span>
+            <p>Key Skills: SQL, UNIX</p>
+            <ul>
+                <li>Supported critical banking projects involving data preparation, reporting, and backend monitoring automation.</li>
+                <li>Interfaced with business and technical stakeholders to gather requirements for enhancements in financial systems.</li>
+                <li>Conducted root cause analysis and delivered insights to improve operational risk mitigation and incident handling.</li>
+                <li>Created structured documentation and maintained data integrity for key metrics in compliance systems.</li>
+                <li>Collaborated with cross-functional teams on data-driven initiatives aligned with regulatory standards and banking KPIs.</li>
+                <li>Supported change management, ensuring smooth transitions and minimizing downtime.</li>
+            </ul>
+        </div>
+
+        <div class="experience-item">
+            <h4>Business Analyst Intern</h4>
+            <span class="duration">April 2021 – July 2021 | Hexanika (India)</span>
+            <p>Key Skills: Python, Machine Learning- Jupyter Notebook, Tableau</p>
+            <ul>
+                <li>Using Python to clean and analyze large datasets.</li>
+                <li>Performing different ML techniques like Decision Tree Algorithm, Random Forest, Logistic Regression to predict action taken for applications.</li>
+                <li>Creating customized reports in Tableau for data visualization.</li>
+                <li>Creating pseudo code for Hypothesis testing.</li>
+            </ul>
+        </div>
+
+        <div class="experience-item">
+            <h4>Data Analyst Intern</h4>
+            <span class="duration">Feb 2021 – April 2021 | Naviya Technology (India)</span>
+            <p>Key Skills: Tableau, Microsoft Excel, Python</p>
+            <ul>
+                <li>Building data model from scratch according to actual data available in excel.</li>
+                <li>Designing a Tableau Dashboard to visualize core business KPI's (e.g., Expenses per Activity).</li>
+                <li>Analyze data and draw conclusions to provide insights using analysis and visualization tools such as SQL, Excel, Tableau.</li>
+                <li>Using Vlookup for categorising the items.</li>
+            </ul>
+        </div>
+
+        <h3 class="section-title">Skills</h3>
+        <div class="skills-list">
+            <div class="skill-category">
+                <strong>Programming & Tools:</strong>
+                <p>Python (Pandas, NumPy, Scikit-learn), SQL, UNIX, Jupyter Notebook</p>
+            </div>
+            <div class="skill-category">
+                <strong>Visualization & Data Handling:</strong>
+                <p>Tableau, Power BI, Microsoft Excel (VLOOKUP, PivotTables), Google Sheets</p>
+            </div>
+            <div class="skill-category">
+                <strong>Statistical & Machine Learning:</strong>
+                <p>Regression Analysis, Classification Models, Clustering, Hypothesis Testing, Time Series Analysis, Data Mining, Risk Analysis, Machine Learning (Logistic Regression, Decision Trees, Random Forest)</p>
+            </div>
+            <div class="skill-category">
+                <strong>Soft Skills:</strong>
+                <p>Analytical Thinking, Problem Solving, Strong Communication, Team Collaboration, Quick Learner, Detail-Oriented</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="project-section">
+        <h3 class="section-title">Projects</h3>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
+            <div class="project-item">
+                <a href="https://github.com/madhavipawar/Apple-Stock-Price-Forecasting" target="_blank">
+                    <img src="images/proj_1.jpg" onerror="this.onerror=null;this.src='https://placehold.co/400x200/f0f0f0/3b82f6?text=Apple+Forecast';" alt="Apple Stock Price Forecasting Project">
+                    <div class="project-content">
+                        <h4>Apple Stock Price Forecasting | Python, LSTM, ARIMA, VAR</h4>
+                        <p>Developed and compared multiple time series models (ARIMA, VAR, Prophet, LSTM) to forecast Apple Inc. (AAPL) stock prices. Analyzed historical trends and patterns, evaluated models using MAE, RMSE, and MAPE. LSTM outperformed other models with the highest predictive accuracy, followed by VAR and ARIMA. Generated insights for potential investment decisions based on model forecasts.</p>
+                    </div>
+                </a>
+            </div>
+
+            <div class="project-item">
+                <a href="https://github.com/madhavipawar/Mall-Customer-Segmentation" target="_blank">
+                    <img src="images/proj_2.png" onerror="this.onerror=null;this.src='https://placehold.co/400x200/f0f0f0/3b82f6?text=Customer+Seg';" alt="Mall Customer Segmentation Project">
+                    <div class="project-content">
+                        <h4>Mall Customer Segmentation | Python, K-Means Clustering</h4>
+                        <p>Performed customer segmentation using K-Means based on annual income and spending score. Identified key customer groups to enable targeted marketing and strategic planning. Enhanced understanding of customer behavior for improved decision-making and ROI. Project aimed to support data-driven campaigns and boost overall profitability.</p>
+                    </div>
+                </a>
+            </div>
+
+            <div class="project-item">
+                <a href="https://github.com/madhavipawar/Netflix-Data-Analysis-End-to-End-Pipeline" target="_blank">
+                    <img src="images/proj_3.jpeg" onerror="this.onerror=null;this.src='https://placehold.co/400x200/f0f0f0/3b82f6?text=Netflix+Pipeline';" alt="Netflix Data Analysis Pipeline Project">
+                    <div class="project-content">
+                        <h4>Netflix Data Analysis – End-to-End Pipeline (DBT, AWS, Snowflake)</h4>
+                        <p>Designed and built an end-to-end data pipeline using DBT (Data Build Tool) in Visual Studio Code, leveraging AWS S3 for data storage and Snowflake as the data warehouse, to prepare Netflix-style data for analysis and visualization.</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section id="education-section">
+        <h3 class="section-title">Education</h3>
+
+        <div class="education-item">
+            <h4>Masters in Data Science</h4>
+            <p class="details">2025 - Present | TU Graz, Graz, Austria</p>
+        </div>
+
+        <div class="education-item">
+            <h4>M.Sc. – Statistics</h4>
+            <p class="details">2019 – 2021 | MIT WPU, Pune, India</p>
+            <p>Final Grade: 86.25%</p>
+            <p>Subjects: Data Mining, Operational Research, Regression Analysis, Sampling Theory</p>
+        </div>
+
+        <div class="education-item">
+            <h4>B.Sc. – Statistics</h4>
+            <p class="details">2016 – 2019 | Sir Parashurambhau College, Pune, India</p>
+            <p>Final Grade: 67.6%</p>
+            <p>Subjects: Statistics, Mathematics</p>
+        </div>
+
+        <div class="education-item">
+            <h4>HSC (12th)</h4>
+            <p class="details">2014 – 2016 | English School and Jr. College, Pune, India</p>
+        </div>
+
+        <div class="education-item">
+            <h4>SSC (10th)</h4>
+            <p class="details">2013 – 2014 | Mar Ivanios Convent High School, Pune, India</p>
+        </div>
+    </section>
+
+    <section id="competencies-section">
+        <h3 class="section-title">Competencies & Certifications</h3>
+        <ul>
+            <li>Python Programming Masterclass</li>
+            <li>Microsoft Power BI for Business Intelligence</li>
+            <li>SQL</li>
+            <li>Machine Learning</li>
+        </ul>
+    </section>
+
+    <section id="workshop-section">
+        <h3 class="section-title">Workshop</h3>
+        <div class="workshop-item">
+            <h4>Statistics in Medicine</h4>
+            <p>Institute: Sir Parashurambhau College</p>
+            <ul>
+                <li>Sponsored by Cytel Statistical Software and Services Private Limited.</li>
+                <li>Focus: Application of Statistics in Medicine.</li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="contact-section">
+        <h3 class="section-title">Contact Me</h3>
+        <p>Feel free to reach out through the following channels:</p>
+
+        <div class="contact-info-grid">
+            <div class="contact-box">
+                <span class="icon-map"></span>
+                <h4>Address</h4>
+                <p>Graz, Austria</p>
+            </div>
+            <div class="contact-box">
+                <span class="icon-phone"></span>
+                <h4>Contact Number</h4>
+                <p><a href="tel://+4368864773593">+43 68864773593</a></p>
+            </div>
+            <div class="contact-box">
+                <span class="icon-mail"></span>
+                <h4>Email Address</h4>
+                <p><a href="mailto:madhavipawar7324@gmail.com">madhavipawar7324@gmail.com</a></p>
+            </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 3rem;">
+            <h2>Have a Question?</h2>
+            <a href="mailto:madhavipawar7324@gmail.com" class="action-button">Email Me</a>
+        </div>
+
+        <div style="text-align: center; margin-top: 3rem;">
+            <p>Find me on:</p>
+            <div class="social-icons" style="justify-content: center; gap: 1rem;">
+                <a href="https://www.linkedin.com/in/madhavi-pawar-057a3b196/" title="LinkedIn"><span class="icon-linkedin"></span></a>
+                <a href="https://github.com/Madhavi7821" title="GitHub"><span class="icon-github"></span></a>
+                </div>
+        </div>
+    </section>
+  </div>
+
+  <script>
+    // Typing Animation Script (Adjusted for the new template's H2 element)
+    const typingAnimationElement = document.getElementById('typing-animation');
+    const typingTexts = [
+        'Data Professional ',
+        'Data Analyst ',
+        'Data Scientist '
+    ];
+
+    let textIndex = 0;
+    let charIndex = 0;
+    let isDeleting = false;
+    let typingSpeed = 100; // Initial typing speed
+
+    function type() {
+        const currentText = typingTexts[textIndex];
+        if (isDeleting) {
+            typingAnimationElement.textContent = currentText.substring(0, charIndex - 1);
+            charIndex--;
+        } else {
+            typingAnimationElement.textContent = currentText.substring(0, charIndex + 1);
+            charIndex++;
+        }
+
+        if (!isDeleting && charIndex === currentText.length) {
+            typingSpeed = 1000; // Pause at end of typing
+            isDeleting = true;
+        } else if (isDeleting && charIndex === 0) {
+            isDeleting = false;
+            textIndex = (textIndex + 1) % typingTexts.length;
+            typingSpeed = 150; // Reset typing speed for next text
+        } else {
+            typingSpeed = isDeleting ? 50 : 100; // Faster deleting, normal typing
+        }
+
+        setTimeout(type, typingSpeed);
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        type();
+
+        // Smooth scroll for navigation links
+        document.querySelectorAll('.nav-links a').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+
+                // Update active class
+                document.querySelectorAll('.nav-links a').forEach(link => link.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+
+        // Optional: Highlight active link on scroll (more complex, might need Intersection Observer)
+        const sections = document.querySelectorAll('section');
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    document.querySelectorAll('.nav-links a').forEach(link => {
+                        link.classList.remove('active');
+                        if (link.getAttribute('href') === `#${entry.target.id}`) {
+                            link.classList.add('active');
+                        }
+                    });
+                }
+            });
+        }, {
+            threshold: 0.5, // Adjust this value to control when the section is considered "active"
+            rootMargin: "-50% 0px -50% 0px" // To make the active section highlight when it's roughly in the middle of the viewport
+        });
+
+        sections.forEach(section => {
+            observer.observe(section);
+        });
+    });
+  </script>
+</body>
+</html>
